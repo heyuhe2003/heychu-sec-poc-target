@@ -1,0 +1,13 @@
+name: 'CI'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Test
+      run: node ./lib/cli.js ${{ secrets.EMAIL }} ${{ secrets.PASSWORD }} ./test/fixtures/Unity_v2021.1.1f1.alf
